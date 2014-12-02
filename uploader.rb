@@ -4,28 +4,40 @@ require 'pry'
 require 'json'
 require 'base64'
 
-content = File.binread("mac.pdf")
+print "What is the name of the file? (cfdog.pdf, cfbig.pdf, etc"
+banner_file = gets.chomp
+
+content = File.read(banner_file)
 encoded = Base64.encode64(content)
 
-output = File.open( "mac.txt","w" )
-output << encoded
-output.close
+print "Recipient name:"
+name = gets.chomp
+print "Business Name:"
+business = gets.chomp
+print "Address Street:"
+address = gets.chomp
+print "City:"
+city = gets.chomp
+print "State:"
+state = gets.chomp
+print "Zip code:"
+zip = gets.chomp
 
-uri = URI.parse("https://api.trypaper.com/Mailing")
 
 send_data = {
   "ReturnAddressId" => "southbroadway",
   "Content" => encoded,
   "Recipient" => {
-    "Name" => "John Smith",
-    "Organization" => "CrossFit Smith",
-    "AddressLineOne" => "209 Dove Ave",
-    "City" => "Chilton",
-    "Province" => "WI",
-    "PostalCode" => "53014"
+    "Name" => name,
+    "Organization" => business,
+    "AddressLineOne" => address,
+    "City" => city,
+    "Province" => state,
+    "PostalCode" => zip
   }
 }
 
+uri = URI.parse("https://api.trypaper.com/Mailing")
 
 # Full control
 http = Net::HTTP.new(uri.host, uri.port)
