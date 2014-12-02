@@ -69,3 +69,43 @@ request.body = send_data.to_json
 
 response = http.request(request)
 
+print "Spool Batch? (Y/N): "
+spool = gets.chomp
+
+if spool == "Y"
+  json_response = JSON.parse(response.body)
+  batchid = json_response["BatchId"]
+
+  spool_data = {
+    "BatchID" => batchid
+  }
+
+  uri2 = URI.parse("https://api.trypaper.com/Spool")
+  http2 = Net::HTTP.new(uri2.host, uri2.port)
+  http2.set_debug_output $stdout
+  http2.use_ssl = true
+
+  request2 = Net::HTTP::Post.new(uri2.request_uri)
+  request2['Content-Type'] = "application/json"
+
+  #Test API Key
+  request2['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
+
+  #Live API key
+  #request['Authorization'] = ENV["TRYPAPER_API"]
+
+  request2.body = spool_data.to_json
+
+  response2 = http2.request(request2)
+
+else
+  puts "It will spool later then."
+  Process.exit
+end
+
+
+
+
+
+
+
