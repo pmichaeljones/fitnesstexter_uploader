@@ -60,10 +60,10 @@ request = Net::HTTP::Post.new(uri.request_uri)
 request['Content-Type'] = "application/json"
 
 #Test API Key
-request['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
+#request['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
 
 #Live API key
-#request['Authorization'] = ENV["TRYPAPER_API"]
+request['Authorization'] = ENV["TRYPAPER_API"]
 
 request.body = send_data.to_json
 
@@ -89,10 +89,10 @@ if spool == "Y"
   request2['Content-Type'] = "application/json"
 
   #Test API Key
-  request2['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
+  #request2['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
 
   #Live API key
-  #request['Authorization'] = ENV["TRYPAPER_API"]
+  request2['Authorization'] = ENV["TRYPAPER_API"]
 
   request2.body = spool_data.to_json
 
