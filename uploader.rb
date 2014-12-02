@@ -4,6 +4,10 @@ require 'pry'
 require 'json'
 require 'base64'
 
+pdf_files = Dir.glob("*pdf")
+
+pdf_files.each { |x| puts x }
+
 print "What is the name of the file? (cfdog.pdf, cfbig.pdf, etc:\n"
 banner_file = gets.chomp
 
@@ -54,7 +58,13 @@ http.use_ssl = true
 
 request = Net::HTTP::Post.new(uri.request_uri)
 request['Content-Type'] = "application/json"
+
+#Test API Key
 request['Authorization'] = "TPTESTCF24A7D8095EDF88E3EFD6103C"
+
+#Live API key
+#request['Authorization'] = ENV["TRYPAPER_API"]
+
 request.body = send_data.to_json
 
 response = http.request(request)
