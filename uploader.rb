@@ -38,8 +38,8 @@ end
 
 send_data = {
   "ReturnAddressId" => "southbroadway",
+  "Tags" => ["triplicate_contents"],
   "Content" => encoded,
-  "Tags" => "triplicate_contents"
   "Recipient" => {
     "Name" => name,
     "Organization" => business,
