@@ -23,6 +23,8 @@ until confirm == "Y"
   business = gets.chomp
   print "Address Street:\n"
   address = gets.chomp
+  print "Suite Number:\n"
+  address2 = gets.chomp
   print "City:\n"
   city = gets.chomp
   print "State:\n"
@@ -44,6 +46,7 @@ send_data = {
     "Name" => name,
     "Organization" => business,
     "AddressLineOne" => address,
+    "AddressLineTwo" => address2,
     "City" => city,
     "Province" => state,
     "PostalCode" => zip
