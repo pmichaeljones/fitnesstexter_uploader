@@ -8,7 +8,7 @@ pdf_files = Dir.glob("*pdf")
 
 pdf_files.each { |x| puts x }
 
-print "Select the correct customer banner below:\n"
+print "Select the correct customer banner from above list:\n"
 banner_file = gets.chomp
 
 content = File.read(banner_file)
