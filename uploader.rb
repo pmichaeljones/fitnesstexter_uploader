@@ -8,7 +8,7 @@ pdf_files = Dir.glob("*pdf")
 
 pdf_files.each { |x| puts x }
 
-print "What is the name of the file? (cfdog.pdf, cfbig.pdf, etc:\n"
+print "Select the correct customer banner below:\n"
 banner_file = gets.chomp
 
 content = File.read(banner_file)
