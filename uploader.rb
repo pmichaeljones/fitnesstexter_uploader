@@ -18,9 +18,9 @@ confirm = ""
 until confirm == "Y"
   print "Recipient name:\n"
   name = gets.chomp
-  print "Business Name:\n"
+  print "Address Line 1:\n"
   business = gets.chomp
-  print "Address Street:\n"
+  print "Address Line 2:\n"
   address = gets.chomp
   print "City:\n"
   city = gets.chomp
@@ -41,8 +41,8 @@ send_data = {
   "Content" => encoded,
   "Recipient" => {
     "Name" => name,
-    "Organization" => business,
-    "AddressLineOne" => address,
+    "AddressLineOne" => business,
+    "AddressLineTwo" => address,
     "City" => city,
     "Province" => state,
     "PostalCode" => zip
